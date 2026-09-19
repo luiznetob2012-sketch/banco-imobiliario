@@ -1,0 +1,5 @@
+# Créditos do efeito sonoro
+
+A interface v4 utiliza o arquivo MP3 `money cash register purchase.mp3` do pacote [SoundMonster](https://github.com/jonjonsson/SoundMonster/tree/main/Public%20domain), classificado no repositório como CC0. O arquivo corresponde a [Cash Register Purchase, de Zott820, no Freesound](https://freesound.org/people/Zott820/sounds/209578/), uma montagem que contém amostras de CapsLok (CC0), ceremonialchapstick (CC0) e UncleSigmund ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Crédito ao criador da amostra de moedas: **UncleSigmund**, [coinbank.wav](https://freesound.org/people/UncleSigmund/sounds/36328/). O som não é autoria do Banco Super Imobiliário.
+
+O arquivo de áudio é carregado do repositório SoundMonster por uma URL MP3 externa. O app não distribui nem vende o efeito separadamente. Caso a fonte externa não esteja disponível, o app deve informar erro, nunca afirmar que reproduziu o som.
