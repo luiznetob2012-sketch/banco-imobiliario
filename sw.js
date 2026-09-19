@@ -1,4 +1,5 @@
-const CACHE='banco-super-imobiliario-v1';
+// v3: scripts e paginas usam rede primeiro para receber atualizacoes do jogo.
+const CACHE='banco-super-imobiliario-v3';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()));
@@ -9,8 +10,19 @@ self.addEventListener('activate',event=>{
 self.addEventListener('fetch',event=>{
   const request=event.request;
   if(request.method!=='GET'||new URL(request.url).origin!==self.location.origin)return;
+  // Arquivos HTML/JS devem ser sempre checados na rede: o cache-first anterior
+  // prendia os aparelhos no bip antigo mesmo depois da publicacao no GitHub.
+  const pathname=new URL(request.url).pathname;
+  const dynamic=/\.(?:html|js|css)$/i.test(pathname)||request.mode==='navigate';
+  if(dynamic){
+    event.respondWith(fetch(request).then(response=>{
+      if(response.ok){const copy=response.clone();event.waitUntil(caches.open(CACHE).then(cache=>cache.put(request,copy)));}
+      return response;
+    }).catch(()=>caches.match(request).then(cached=>cached||Response.error())));
+    return;
+  }
   event.respondWith(caches.match(request).then(cached=>cached||fetch(request).then(response=>{
-    if(response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(request,copy));}
+    if(response.ok){const copy=response.clone();event.waitUntil(caches.open(CACHE).then(cache=>cache.put(request,copy)));}
     return response;
-  }).catch(()=>request.mode==='navigate'?caches.match('./index.html'):Response.error())));
+  })));
 });
