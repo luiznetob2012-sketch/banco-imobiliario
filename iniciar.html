@@ -1,32 +1,17 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="noindex">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <title>Banco Super Imobiliário — abrir multiplayer</title>
-  <style>body{background:#0c1625;color:#effff5;font:16px system-ui;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center;padding:24px}a{color:#8decb8}</style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Banco Super Imobiliário — abrir multiplayer</title>
+<style>body{background:#0c1625;color:#effff5;font:16px system-ui;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center;padding:24px}a{color:#8decb8}</style>
 </head>
 <body>
-  <main>
-    <h1>🎲 Banco Super Imobiliário</h1>
-    <p id="status">Abrindo a versão com banqueiro escolhido e som de recebimento…</p>
-    <p><a href="./jogar-v2.html">Abrir o jogo manualmente</a></p>
-  </main>
-  <script>
-    'use strict';
-    // Apenas URL e chave publicáveis. Nunca incluir senhas nem chaves secretas.
-    const publicConfig = {
-      url: 'https://dhddjynkjwsrxcfepwkc.supabase.co',
-      key: 'sb_publishable_5qzbaCZsu8DFIhe4oUkTtg_pLgMYFCl'
-    };
-    try {
-      localStorage.setItem('super-bi-online-v1config', JSON.stringify(publicConfig));
-    } catch (_) {
-      // jogar-v2.html também contém as configurações públicas necessárias.
-    }
-    location.replace(new URL('./jogar-v2.html', location.href).href);
-  </script>
+<main><h1>🎲 Banco Super Imobiliário</h1><p>Carregando versão V3 com som de dinheiro…</p><p><a href="./jogar-v3.html">Abrir diretamente</a></p></main>
+<script>
+'use strict';
+// A pagina jogar-v3.html inclui somente a URL e chave publica Supabase.
+location.replace(new URL('./jogar-v3.html',location.href).href);
+</script>
 </body>
 </html>
