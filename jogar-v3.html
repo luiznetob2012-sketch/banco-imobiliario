@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102236"><title>Banco Super Imobiliário · Multiplayer v3</title>
+<style>
+:root{font:16px system-ui,-apple-system,'Segoe UI',sans-serif;color:#f4faf6;background:#0c1625;color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,#204838,transparent 39%),#0c1625;min-height:100vh}main{max-width:970px;margin:auto;padding:20px 13px 72px}.card{background:#17293b;border:1px solid #3d586b;border-radius:18px;padding:20px;margin:13px 0}.narrow{max-width:540px;margin:30px auto}h1{font-size:1.55rem}h2{font-size:1.15rem}h1,h2{margin:0 0 13px}p,small{line-height:1.5}small,.muted{color:#b3c6d2}button,input,select,textarea{font:inherit}button{border:1px solid #50758a;background:#29435b;color:#fff;font-weight:700;min-height:44px;border-radius:11px;padding:10px 12px;cursor:pointer}button.green{background:#8decb8;color:#123027;border-color:#8decb8}button:disabled{opacity:.5;cursor:not-allowed}input,select,textarea{width:100%;background:#0c1928;color:white;border:1px solid #557187;border-radius:10px;padding:11px;min-height:44px}textarea{min-height:68px}label{font-weight:650;display:block;margin:12px 0 5px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}.player{background:#1e3748;border:1px solid #3a6371;padding:15px;border-radius:13px}.balance{font-size:1.75rem;color:#95ebbc;font-weight:850;margin:10px 0}.actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px}.pill{display:inline-block;border:1px solid #65a58b;padding:4px 8px;border-radius:90px;font-size:.75rem;color:#a6f0cb}.notice{position:sticky;top:4px;z-index:2;background:#35526a;color:#fff;padding:12px;border-radius:9px;margin-bottom:10px}.error{background:#74303d}.hidden{display:none!important}.line{padding:12px 0;border-bottom:1px solid #355164}.line:last-child{border:0}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0}dialog{width:min(95vw,500px);max-height:88vh;overflow:auto;background:#17293b;color:#fff;border:1px solid #50758a;border-radius:18px;padding:20px}dialog::backdrop{background:#000b}hr{border:0;border-top:1px solid #355164;margin:21px 0}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #8decb8;outline-offset:2px}@media(max-width:450px){.card{padding:15px}.actions{grid-template-columns:1fr}header h1{font-size:1.25rem}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./app-v2.js?v=3" defer></script>
+<script src="./som-dinheiro-v3.js?v=3" defer></script>
+</head>
+<body>
+<main>
+<header class="row"><div><small class="pill">🎲 BANCO DIGITAL · V3</small><h1>Banco Super Imobiliário</h1></div><div class="row"><button id="sound" type="button">🔕 Ativar som</button><button id="refresh" type="button" class="hidden">↻ Atualizar</button></div></header>
+<div id="notice" class="notice hidden" role="status" aria-live="polite"></div>
+<div id="app" class="card">Carregando…</div>
+<small>Dados e tabuleiro físicos. Use 💸 Testar som primeiro. O efeito de caixa registradora toca em cada operação concluída com som ativado e o aplicativo aberto.</small>
+</main>
+<dialog id="dlg"><h2 id="dlg-title"></h2><form id="dlg-form"><div id="fields"></div><div class="row" style="margin-top:20px;justify-content:flex-end"><button type="button" id="cancel">Cancelar</button><button class="green" type="submit">Confirmar</button></div></form></dialog>
+</body>
+</html>
