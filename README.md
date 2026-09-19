@@ -1,27 +1,26 @@
-# Banco Super Imobiliário — banco simples multiplayer
+# Banco Super Imobiliário — modo simples multiplayer
 
-## Status real
+## Estado atual
 
-O `index.html` que está na raiz é a versão antiga **de um único aparelho**. O multiplayer **ainda não está pronto nem conectado ao Supabase**. Não use essa interface para jogar em seis celulares simultaneamente.
+O `index.html` da raiz ainda é um protótipo para **um aparelho**; não há sincronização real entre celulares nesta interface. Não anunciar o multiplayer como pronto. O usuário já executou as etapas SQL 01 (tabelas), 02 (salas) e 03 (dados antigos), mas o grupo decidiu não usar dados nem turnos digitais.
 
-No Supabase, foram executadas pelo usuário as etapas SQL das tabelas (etapa 1), salas (`supabase/02-salas.sql`) e dados/ordem (`supabase/03-dados-e-ordem.sql`). O grupo mudou os requisitos e não quer mais registrar dados nem controlar turnos no aplicativo. Por isso, a **nova etapa** é `supabase/04-banco-simples.sql`, a ser executada pelo usuário no SQL Editor. As funções antigas de dados digitais serão desautorizadas por essa migração; nenhuma tabela nem registro existente serão apagados.
+**ÚNICA próxima migração: [`supabase/06-versao-consolidada.sql`](supabase/06-versao-consolidada.sql).** Ela inclui as funcionalidades combinadas e desativa as funções de dados digitais, sem excluir saldos. Os scripts 04 e 05 eram rascunhos e **não devem ser executados**. A etapa 06 está no GitHub, mas ainda não foi executada ou testada no Supabase do usuário.
 
-## Regras atuais
+## Regras do banco
 
-- Até **6 jogadores**, cada um com **R$ 15.000** no início.
-- Os dados, a ordem e os turnos são gerenciados **fora do aplicativo**, na mesa. Nada de formulário de dados ou classificação.
-- Depois que todos entram na sala, o anfitrião toca em **Iniciar**; o servidor sorteia **um banqueiro entre os participantes**. Ele também joga normalmente.
-- Painel: saldo de todos, banco responsável, cobranças pendentes, histórico de movimentações.
-- Jogador pode **enviar dinheiro** do próprio saldo ou **cobrar aluguel** de outro; o pagamento da cobrança só é efetivado após confirmação do pagador.
-- O banqueiro pode registrar bônus, notícias, multas e créditos/debitos do banco, além das próprias transações como jogador.
-- **Passou pela partida:** somente o banqueiro pode tocar em **+ R$ 2.000** para o jogador escolhido. Não existe pagamento em massa. Cada passagem é um evento diferente; o mesmo clique retransmitido com a mesma chave UUID não duplica crédito.
-- Tabuleiro, cartas, propriedade, prisão e fiança continuam inicialmente sob controle físico do grupo. Podemos adicionar atalhos bancários depois, sem tornar a interface complexa.
+- Entre 2 e 6 jogadores com R$ 15.000 iniciais cada. Cada um usa seu celular; dados, tabuleiro e ordem são físicos.
+- Ao iniciar a partida, o anfitrião aciona um sorteio de banqueiro entre todos os participantes. O banqueiro continua com sua conta pessoal separada do banco virtual.
+- Todos veem saldos e histórico. Cada jogador pode transferir, solicitar aluguel com confirmação do pagador, pagar ao banco, hipotecar tudo ou algumas coisas (descrevendo bens e digitando o valor), pagar fiança de R$ 500 caso esteja preso e cadastrar opcionalmente cidade, imóvel, casas e hotéis.
+- Banqueiro pode pagar bônus/notícias positivas, conceder individualmente R$ 2.000 ao jogador que passou pelo início e controlar prisão por 3 jogadas do preso (contagem manual).
+- Hipoteca paga do banco para o jogador; cadastro de imóveis não altera saldos. O sistema não avalia imóveis nem impede automaticamente hipotecas repetidas sobre o mesmo bem: a mesa confere as cartas físicas.
 
-## Para continuar
+Leia a [especificação completa](docs/regras-banco-simplificado.md).
 
-1. Execute `supabase/04-banco-simples.sql` no SQL Editor **uma única vez** e confira o resultado. O SQL ainda não foi validado em um Supabase de testes: em caso de erro, informe a mensagem e não tente consertar às cegas.
-2. Criar nova interface conectada com a URL do projeto Supabase e sua chave **publishable/anon**, nunca a senha Postgres, `service_role` ou qualquer chave secreta.
-3. Implementar atualização automática do painel (consultando a função `bi_estado_simples` periodicamente ou um canal Realtime protegido), testes com dois celulares e, depois, com até seis.
-4. Publicar via GitHub Pages quando a interface multiplayer estiver pronta.
+## Próximas ações
 
-**Importante:** no SQL atual os valores são inteiros em reais (ex.: `15000` e `2000`). O frontend antigo opera em centavos e **não pode ser reaproveitado para gravar saldos no Supabase sem adaptação**.
+1. Abrir `supabase/06-versao-consolidada.sql`, copiar seu conteúdo inteiro e executar em uma única consulta no Supabase SQL Editor. Confirmar o resultado; se houver erro, trazer a mensagem exata.
+2. Construir nova interface com autenticação anônima e chamadas às funções `bi_criar_sala`, `bi_entrar_sala`, `bi_iniciar_partida`, `bi_painel`, `bi_operar`, `bi_responder_aluguel`, `bi_controlar_prisao`, `bi_pagar_fianca`, `bi_salvar_imovel`, `bi_excluir_imovel`.
+3. Conectar frontend com **Project URL e chave publishable/anon**, nunca senha do banco, `service_role` ou chave secreta. Atualizar painel automaticamente via consultas periódicas; as tabelas seguem protegidas e sem SELECT direto.
+4. Testar autenticação, permissões, operações concorrentes e reconexão em 2 celulares e depois em até 6. Só então publicar o novo frontend via GitHub Pages.
+
+**Valores do SQL são inteiros em reais** (`15000` e `2000`), diferentemente do frontend antigo, que usa centavos. Não conectar o código antigo às RPCs sem ajustar unidades.
