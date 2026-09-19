@@ -8,13 +8,14 @@
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="./app-v2.js" defer></script>
+<script src="./som-transacoes.js?v=1" defer></script>
 </head>
 <body>
 <main>
 <header class="row"><div><small class="pill">🎲 BANCO DIGITAL</small><h1>Banco Super Imobiliário</h1></div><div class="row"><button id="sound" type="button">🔕 Ativar som</button><button id="refresh" type="button" class="hidden">↻ Atualizar</button></div></header>
 <div id="notice" class="notice hidden" role="status" aria-live="polite"></div>
 <div id="app" class="card">Carregando…</div>
-<small>Tabuleiro, dados e turnos são físicos. O aplicativo controla o banco. Sons funcionam com a página aberta e após ativação no aparelho.</small>
+<small>Tabuleiro, dados e turnos são físicos. O aplicativo controla o banco. Ative o som uma vez: cada transação concluída na sala avisa com som de dinheiro enquanto a página estiver aberta.</small>
 </main>
 <dialog id="dlg"><h2 id="dlg-title"></h2><form id="dlg-form"><div id="fields"></div><div class="row" style="margin-top:20px;justify-content:flex-end"><button type="button" id="cancel">Cancelar</button><button class="green" type="submit">Confirmar</button></div></form></dialog>
 </body>
