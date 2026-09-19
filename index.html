@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111b30">
+  <meta name="description" content="Banco gratuito para jogar Super Imobiliário no mesmo aparelho: até 6 jogadores, imóveis, aluguéis, notícias e prisão.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Banco Imobiliário">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="icon" href="./icon-192.png">
+  <title>Banco do Super Imobiliário</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0a101d;--surface:#141e30;--surface2:#1b2840;--edge:#30405b;--muted:#9aa9c0;--text:#f5f7fc;--mint:#78f0b0;--mint2:#153b33;--red:#ff8a96;--yellow:#ffdb8e;--r:20px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 0 0,#172947 0,transparent 33%),radial-gradient(ellipse at 90% 30%,#142937 0,transparent 38%),var(--bg);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--text);min-height:100dvh}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--mint);outline-offset:3px}a{color:var(--mint)}.hidden{display:none!important}.shell{max-width:1190px;margin:0 auto;padding:25px 20px 80px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:32px}.brand{display:flex;align-items:center;gap:13px}.brand-mark{width:47px;height:47px;border-radius:16px;background:var(--mint);color:#0b2319;display:grid;place-items:center;font-size:26px;font-weight:1000;box-shadow:0 12px 38px #76efad28}.eyebrow{font-size:11px;font-weight:850;letter-spacing:.16em;color:var(--mint);text-transform:uppercase}.brand h1{font-size:20px;line-height:1.18;letter-spacing:-.04em;margin:4px 0}.muted{color:var(--muted)}.tiny{font-size:12px}.top-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.btn{min-height:42px;padding:10px 15px;border:1px solid var(--edge);background:#1b2940;color:var(--text);border-radius:13px;font-weight:720;transition:transform .14s,background .14s;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn:not(:disabled):active{transform:scale(.97)}.btn:hover:not(:disabled){background:#263954}.btn-primary{background:var(--mint);border-color:var(--mint);color:#09271b}.btn-primary:hover:not(:disabled){background:#a4ffcf}.btn-danger{color:#ff9fa9;border-color:#713d4a;background:#33222f}.btn-light{background:#23344b}.btn-small{padding:8px 11px;min-height:35px;font-size:12px;border-radius:10px}.icon-btn{width:42px;padding:0}.hero{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(260px,.75fr);gap:18px}.hero-main{border:1px solid #385f5b;background:linear-gradient(120deg,#203d49 0%,#15273d 65%,#183139 100%);border-radius:26px;padding:31px;position:relative;overflow:hidden}.hero-main:after{content:'$';font-size:260px;font-weight:900;color:#ffffff06;position:absolute;right:-15px;top:-75px;pointer-events:none}.hero-title{font-size:13px;font-weight:800;color:#b8e9d3;letter-spacing:.06em;text-transform:uppercase}.turn-name{font-size:clamp(30px,4.4vw,48px);letter-spacing:-.055em;margin:10px 0 5px;line-height:1.1;word-wrap:break-word}.turn-line{font-size:14px;color:#bbd1d7}.hero-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.hero-side{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stat{padding:20px;border:1px solid var(--edge);background:#172238cc;border-radius:21px;display:flex;flex-direction:column;justify-content:center;min-height:118px}.stat b{font-size:clamp(21px,2.6vw,30px);letter-spacing:-.04em;margin:6px 0;overflow-wrap:anywhere}.stat .stat-money{font-size:clamp(14px,1.4vw,20px);white-space:nowrap;overflow-wrap:normal}.stat span{color:var(--muted);font-size:12px}.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:30px 0 15px}.section-title h2{font-size:21px;letter-spacing:-.03em;margin:0}.section-title p{font-size:12px;color:var(--muted);margin:0}.players{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.player{padding:20px;border:1px solid var(--edge);background:linear-gradient(145deg,#1b283e,#131d2d);border-radius:21px;position:relative;overflow:hidden;min-width:0}.player.active{border-color:#76e8ad;box-shadow:0 0 0 1px #79f0b044,0 18px 38px #0002}.player-color{position:absolute;top:0;left:0;right:0;height:4px}.player-top{display:flex;align-items:center;gap:10px}.avatar{height:39px;width:39px;border-radius:13px;color:#091827;display:grid;place-items:center;font-weight:950;font-size:16px;flex-shrink:0}.player-name{font-size:15px;font-weight:800;overflow-wrap:anywhere}.status{font-size:11px;color:var(--muted);margin-top:3px}.pill{font-size:10px;border-radius:999px;padding:5px 7px;margin-left:auto;background:#184536;color:#91f3b9;white-space:nowrap}.pill.jail{color:#ffdfa0;background:#514022}.balance-label{color:var(--muted);font-size:11px;margin-top:23px}.balance{font-size:clamp(25px,3.2vw,34px);font-weight:860;letter-spacing:-.055em;margin:5px 0 18px;overflow-wrap:anywhere}.player-actions{display:flex;gap:7px;flex-wrap:wrap}.shortcuts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.shortcut{border:1px solid var(--edge);border-radius:19px;background:var(--surface);padding:19px;text-align:left;min-height:117px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;color:var(--text);font-size:13px;font-weight:800}.shortcut:hover{border-color:#669f91;background:#213248}.shortcut strong{font-size:25px}.shortcut .desc{color:var(--muted);font-size:11px;font-weight:500;margin-top:6px}.tabs{display:flex;gap:5px;border-bottom:1px solid var(--edge);margin:35px 0 0;overflow-x:auto}.tab{background:transparent;border:0;color:var(--muted);border-bottom:3px solid transparent;padding:13px 18px;font-weight:750;white-space:nowrap}.tab.selected{color:var(--mint);border-color:var(--mint)}.panel{padding-top:23px}.property-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.property{border:1px solid var(--edge);border-radius:20px;padding:19px;background:#152037;min-width:0}.property-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.property h3{margin:0;font-size:17px;overflow-wrap:anywhere}.property-sub{margin-top:5px;font-size:12px;color:var(--muted)}.property-price{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:20px 0 14px}.property-price div{background:#1d2b42;padding:12px;border-radius:12px}.property-price span{display:block;color:var(--muted);font-size:11px;margin-bottom:5px}.property-price b{font-size:16px}.property-actions{display:flex;flex-wrap:wrap;gap:7px}.feed{border:1px solid var(--edge);background:#121d2e;border-radius:19px;overflow:hidden}.feed-item{display:flex;gap:12px;padding:16px 18px;align-items:flex-start;border-bottom:1px solid #263650}.feed-item:last-child{border-bottom:0}.feed-icon{background:#22364c;width:34px;height:34px;display:grid;place-items:center;border-radius:11px;flex-shrink:0}.feed-message{font-size:13px;line-height:1.5;overflow-wrap:anywhere}.feed-time{font-size:11px;color:var(--muted);margin-top:4px}.empty{padding:40px;text-align:center;border:1px dashed var(--edge);border-radius:18px;color:var(--muted);font-size:14px}.rules{max-width:760px;line-height:1.7;font-size:14px;color:#c2d0df}.rules strong{color:white}.rules p{margin:10px 0 20px}.rules h3{margin:24px 0 5px;color:white}.footer{margin-top:45px;color:#71859e;font-size:11px;text-align:center}.setup{min-height:100dvh;display:grid;place-items:center;padding:25px 16px}.setup-card{background:linear-gradient(140deg,#1b2c40,#101a2d);border:1px solid #39516b;border-radius:28px;padding:clamp(22px,5vw,40px);max-width:580px;width:100%;box-shadow:0 30px 100px #0005}.setup-card h1{font-size:clamp(27px,5vw,39px);line-height:1.08;letter-spacing:-.05em;margin:13px 0}.setup-card p{font-size:14px;line-height:1.6;color:var(--muted)}.setup-names{display:grid;gap:10px;margin:25px 0 17px}.setup-name{display:flex;align-items:center;gap:9px}.setup-number{width:32px;text-align:center;color:var(--mint);font-weight:800}.field{width:100%;min-height:46px;border:1px solid #40516a;border-radius:12px;padding:10px 13px;background:#0e192b;color:white;min-width:0}.field::placeholder{color:#71849d}.field:focus{border-color:var(--mint);outline:2px solid #76e8ad44;outline-offset:0}.field-label{display:block;font-size:12px;font-weight:750;margin:14px 0 7px;color:#dce7ef}.field-help{font-size:11px;color:var(--muted);margin:6px 0 12px}.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.full{width:100%}.modal-overlay{position:fixed;inset:0;z-index:40;background:#03080fcb;display:flex;align-items:center;justify-content:center;padding:18px;overflow-y:auto}.modal{width:min(100%,495px);max-height:min(92dvh,850px);overflow-y:auto;background:#162238;border:1px solid #45617a;border-radius:24px;box-shadow:0 35px 100px #000a;padding:24px}.modal-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.modal h2{font-size:24px;letter-spacing:-.04em;margin:2px 0 4px}.modal-sub{font-size:12px;line-height:1.5;color:var(--muted);margin:5px 0 20px}.modal-foot{display:flex;justify-content:flex-end;gap:9px;margin-top:22px}.note{padding:13px;background:#28394d;border-radius:13px;color:#bdd2df;font-size:12px;line-height:1.5;margin-top:15px}.toast{position:fixed;bottom:24px;left:50%;z-index:80;transform:translateX(-50%);background:#dcffe8;color:#143323;border-radius:13px;box-shadow:0 15px 40px #0008;padding:13px 19px;font-size:13px;font-weight:750;text-align:center;max-width:min(92%,550px)}.toast.bad{background:#ffe4e5;color:#762b36}.storage-banner{background:#4c3622;color:#ffdfac;border:1px solid #815d34;padding:13px;border-radius:13px;margin:0 0 20px;font-size:12px;line-height:1.4}.switchline{display:flex;align-items:center;gap:9px;cursor:pointer;font-size:13px;padding-top:10px}.switchline input{accent-color:var(--mint);width:17px;height:17px}.import-input{display:none}hr{border:0;border-top:1px solid var(--edge);margin:18px 0}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:850px){.hero{grid-template-columns:1fr}.players{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-side{grid-template-columns:repeat(4,1fr)}.stat{padding:14px}.stat b{font-size:22px}.shortcuts{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:530px){.shell{padding:17px 13px 60px}.topbar{align-items:flex-start;flex-wrap:wrap;margin-bottom:21px}.top-actions{width:100%;justify-content:space-between}.top-actions .btn{font-size:11px;padding:8px;min-height:35px;flex:1}.brand h1{font-size:15px}.brand-mark{height:41px;width:41px}.hero-main{padding:23px}.hero-side{grid-template-columns:repeat(2,1fr)}.players{grid-template-columns:1fr}.player{padding:19px}.property-grid{grid-template-columns:1fr}.shortcuts{gap:9px}.shortcut{min-height:105px;padding:15px}.modal{padding:20px}.section-title{align-items:flex-start}.tabs{margin-top:23px}}
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="modal-root"></div>
+  <input class="import-input" id="import-file" type="file" accept=".json,application/json" aria-label="Importar backup JSON">
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <script>
+  (()=>{
+    'use strict';
+    const KEY='banco-super-imobiliario-v1';
+    const HISTORY_KEY=KEY+'-undo';
+    const COLORS=['#80f0b2','#8fbbff','#ffc383','#f59fc8','#b4a5ff','#8ee3ee'];
+    const START=1500000, BAIL=50000, MAX_AMOUNT=100000000000;
+    let state=null, undoStack=[], activeTab='painel', setupNames=['Jogador 1','Jogador 2','Jogador 3','Jogador 4'], modalCtx=null, toastTimer=null, storageOk=true;
+    const $=sel=>document.querySelector(sel);
+    const escapeHtml=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const cash=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n/100);
+    const ident=()=> typeof crypto!=='undefined' && typeof crypto.randomUUID==='function'?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2);
+    const findPlayer=id=>state?.players.find(p=>p.id===id);
+    const nameOf=id=>findPlayer(id)?.name||'Jogador';
+    const clone=v=>JSON.parse(JSON.stringify(v));
+    const amount=value=>{
+      const raw=String(value??'').trim().replace(',','.');
+      if(!/^\d+(?:\.\d{1,2})?$/.test(raw))return null;
+      const cents=Math.round(Number(raw)*100);
+      return Number.isSafeInteger(cents)&&cents>0&&cents<=MAX_AMOUNT?cents:null;
+    };
+    const notify=(message,bad=false)=>{
+      const el=$('#toast');if(!el)return;
+      el.textContent=message;el.classList.toggle('bad',bad);el.classList.remove('hidden');
+      clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.add('hidden'),3700);
+    };
+    function save(){
+      try{localStorage.setItem(KEY,JSON.stringify(state));localStorage.setItem(HISTORY_KEY,JSON.stringify(undoStack));storageOk=true;}
+      catch(e){storageOk=false;}
+    }
+    function load(){
+      try{
+        const raw=localStorage.getItem(KEY);
+        if(raw){state=validate(JSON.parse(raw));const prev=JSON.parse(localStorage.getItem(HISTORY_KEY)||'[]');undoStack=Array.isArray(prev)?prev.slice(-25).map(validate):[];}
+      }catch(e){state=null;undoStack=[];storageOk=false;}
+    }
+    function validate(raw){
+      if(!raw||!Array.isArray(raw.players)||raw.players.length<2||raw.players.length>6||!Array.isArray(raw.properties))throw Error('Backup inválido.');
+      const players=raw.players.map((p,i)=>{
+        if(!p||typeof p.id!=='string'||!p.id||typeof p.name!=='string'||!Number.isSafeInteger(p.balance)||p.balance<0||p.balance>MAX_AMOUNT||!Number.isInteger(p.jailTurns)||p.jailTurns<0||p.jailTurns>3)throw Error('Dados de jogador inválidos.');
+        return {id:p.id.slice(0,90),name:p.name.trim().slice(0,42)||`Jogador ${i+1}`,color:COLORS[i],balance:p.balance,jailTurns:p.jailTurns};
+      });
+      if(new Set(players.map(p=>p.id)).size!==players.length)throw Error('Jogadores duplicados.');
+      const properties=raw.properties.map(p=>{
+        if(!p||typeof p.id!=='string'||typeof p.name!=='string'||typeof p.ownerId!=='string'||!players.some(u=>u.id===p.ownerId)||!Number.isSafeInteger(p.price)||p.price<0||p.price>MAX_AMOUNT||!Number.isSafeInteger(p.rent)||p.rent<0||p.rent>MAX_AMOUNT||!Number.isInteger(p.houses)||p.houses<0||p.houses>4)throw Error('Imóveis inválidos.');
+        return {id:p.id.slice(0,90),name:p.name.trim().slice(0,65)||'Imóvel',ownerId:p.ownerId,price:p.price,rent:p.rent,houses:p.houses};
+      });
+      if(new Set(properties.map(p=>p.id)).size!==properties.length)throw Error('Imóveis duplicados.');
+      if(!players.some(p=>p.id===raw.turnId))throw Error('Turno inválido.');
+      const log=Array.isArray(raw.log)?raw.log.slice(0,250).filter(l=>l&&typeof l.message==='string').map(l=>({id:String(l.id||ident()).slice(0,90),message:l.message.slice(0,220),time:String(l.time||'').slice(0,45),icon:String(l.icon||'•').slice(0,4)})):[];
+      return {version:1,players,properties,turnId:raw.turnId,round:Number.isInteger(raw.round)&&raw.round>0&&raw.round<999999?raw.round:1,log};
+    }
+    function entry(message,icon='↗'){
+      state.log.unshift({id:ident(),message,time:new Date().toISOString(),icon});
+      if(state.log.length>250)state.log.length=250;
+    }
+    function transact(callback,success){
+      const before=clone(state);
+      try{const result=callback();if(result===false){state=before;return false;}state=validate(state);undoStack.push(before);if(undoStack.length>25)undoStack.shift();save();render();if(success)notify(success);return true;}
+      catch(e){state=before;notify(e.message||'Não foi possível realizar a operação.',true);return false;}
+    }
+    function requireFunds(p,cents){if(p.balance<cents){notify(`Saldo insuficiente de ${p.name}: faltam ${cash(cents-p.balance)}.`,true);return false;}return true;}
+    const playerOptions=(selected,exclude=null)=>state.players.filter(p=>p.id!==exclude).map(p=>`<option value="${escapeHtml(p.id)}" ${p.id===selected?'selected':''}>${escapeHtml(p.name)} · ${cash(p.balance)}</option>`).join('');
+    const wrapForm=(title,description,body,submit='Confirmar',danger=false)=>`<div class="modal-top"><div><div class="eyebrow">BANCO DIGITAL</div><h2 id="modal-title">${title}</h2></div><button class="btn icon-btn" type="button" data-action="close-modal" aria-label="Fechar">✕</button></div><p class="modal-sub">${description}</p><form id="action-form">${body}<div class="modal-foot"><button class="btn" type="button" data-action="close-modal">Cancelar</button><button type="submit" class="btn ${danger?'btn-danger':'btn-primary'}">${submit}</button></div></form>`;
+    const field=(label,name,placeholder='',value='',attrs='required')=>`<label class="field-label" for="field-${name}">${label}</label><input class="field" id="field-${name}" name="${name}" placeholder="${escapeHtml(placeholder)}" value="${escapeHtml(value)}" ${attrs}>`;
+    const moneyField=(label,name,value='',extra='')=>field(label,name,'Ex.: 500',value,`type="number" inputmode="decimal" min="0.01" max="1000000000" step="0.01" required ${extra}`);
+    const selectField=(label,name,options)=>`<label class="field-label" for="field-${name}">${label}</label><select class="field" id="field-${name}" name="${name}" required>${options}</select>`;
+    function openModal(type,extras={}){
+      modalCtx={type,...extras};let html='';const turn=state.turnId;
+      if(type==='transfer'){
+        html=wrapForm('Transferir dinheiro','Pagamento direto entre dois jogadores. Use para negociações ou aluguéis avulsos.',
+          selectField('Quem vai pagar?','from',playerOptions(extras.from||turn))+selectField('Quem recebe?','to',playerOptions(extras.to||state.players.find(p=>p.id!==(extras.from||turn))?.id))+
+          moneyField('Valor (R$)','value')+field('Descrição (opcional)','description','Ex.: aluguel, negociação','', 'maxlength="90"'), 'Transferir');
+      }else if(type==='bank'){
+        html=wrapForm('Dinheiro com o banco','Crédito: banco entrega dinheiro. Débito: jogador paga ao banco.',
+          selectField('Jogador','player',playerOptions(extras.player||turn))+selectField('Operação','direction','<option value="plus">Receber do banco (+)</option><option value="minus">Pagar ao banco (−)</option>')+
+          moneyField('Valor (R$)','value')+field('Motivo','description','Ex.: passou no início, multa','', 'maxlength="90"'),'Registrar');
+      }else if(type==='property'){
+        html=wrapForm('Comprar imóvel','Registre os valores conforme a carta do seu tabuleiro. O preço sai do saldo do comprador.',
+          selectField('Comprador','player',playerOptions(extras.player||turn))+field('Nome do imóvel','name','Ex.: Avenida Paulista','', 'maxlength="65" required')+
+          moneyField('Preço de compra (R$)','price')+moneyField('Aluguel sem casas (R$)','rent'), 'Comprar imóvel');
+      }else if(type==='rent'){
+        const owned=state.properties.filter(p=>p.ownerId!==null);
+        if(!owned.length){notify('Cadastre um imóvel antes de cobrar aluguel.',true);return;}
+        const selected=owned.find(p=>p.id===extras.property)||owned[0];
+        html=wrapForm('Cobrar aluguel','O valor sai de quem caiu no imóvel e vai direto para o proprietário.',
+          selectField('Imóvel','property',owned.map(p=>`<option value="${escapeHtml(p.id)}" ${p.id===selected.id?'selected':''}>${escapeHtml(p.name)} · ${escapeHtml(nameOf(p.ownerId))} · ${cash(p.rent)}</option>`).join(''))+
+          selectField('Quem vai pagar?','payer',playerOptions(extras.payer||turn,selected.ownerId))+
+          `<div id="rent-info" class="note">Proprietário: ${escapeHtml(nameOf(selected.ownerId))} · Aluguel: ${cash(selected.rent)}</div>`,'Cobrar aluguel');
+      }else if(type==='news'){
+        html=wrapForm('Carta de notícia','Escolha quem é afetado e informe se o dinheiro entra ou sai. Cartas não são sorteadas automaticamente.',
+          field('Título da notícia','description','Ex.: Restituição de imposto','', 'maxlength="90" required')+
+          selectField('Efeito','direction','<option value="plus">Ganhar dinheiro (+)</option><option value="minus">Perder dinheiro (−)</option>')+
+          selectField('Quem é afetado?','target',`<option value="all">Todos os jogadores</option>${playerOptions('')}`)+
+          moneyField('Valor por jogador (R$)','value'),'Aplicar notícia');
+      }else if(type==='jail'){
+        html=wrapForm('Mandar para a prisão','O jogador perderá as próximas 3 vezes em que seria sua vez. A fiança de R$ 500 o libera antes disso.',
+          selectField('Jogador','player',playerOptions(extras.player||turn)), 'Prender jogador');
+      }else if(type==='free'){
+        const jailed=state.players.filter(p=>p.jailTurns>0);
+        if(!jailed.length){notify('Não há jogadores presos.',true);return;}
+        html=wrapForm('Pagar fiança','O banco recebe R$ 500 e o jogador é libertado. Ele poderá jogar quando chegar sua vez.',
+          selectField('Jogador preso','player',jailed.map(p=>`<option value="${escapeHtml(p.id)}" ${p.id===extras.player?'selected':''}>${escapeHtml(p.name)} · ${p.jailTurns} turno(s)</option>`).join(''))+
+          `<div class="note">Fiança fixa: <strong>${cash(BAIL)}</strong>.</div>`,'Pagar R$ 500');
+      }else if(type==='upgrade'){
+        const p=state.properties.find(p=>p.id===extras.property);if(!p)return;
+        if(p.houses>=4){notify('Limite de 4 casas por imóvel nesta versão.',true);return;}
+        html=wrapForm('Adicionar uma casa',`Imóvel: ${escapeHtml(p.name)} · Proprietário: ${escapeHtml(nameOf(p.ownerId))}. Consulte a carta para informar o novo aluguel TOTAL.`,
+          `<div class="note">Casas: ${p.houses} → ${p.houses+1}. Aluguel atual: ${cash(p.rent)}.</div>`+
+          moneyField('Custo da nova casa (R$)','cost')+moneyField('Novo aluguel total (R$)','rent',(p.rent/100).toFixed(2)),'Comprar casa');
+      }else if(type==='sell'){
+        const p=state.properties.find(p=>p.id===extras.property);if(!p)return;
+        html=wrapForm('Vender imóvel ao banco',`Imóvel: ${escapeHtml(p.name)} · Dono: ${escapeHtml(nameOf(p.ownerId))}. A propriedade sairá da lista.`,
+          moneyField('Quanto o banco vai pagar? (R$)','value',(p.price/200).toFixed(2))+
+          `<div class="note">O valor sugerido é metade do preço de compra registrado. Ajuste conforme as regras da sua partida.</div>`,'Vender imóvel',true);
+      }else if(type==='import'){
+        html=`<div class="modal-top"><div><div class="eyebrow">BACKUP</div><h2 id="modal-title">Importar partida</h2></div><button class="btn icon-btn" data-action="close-modal">✕</button></div><p class="modal-sub">Selecione um backup .json exportado deste banco. Isso substituirá a partida aberta no aparelho.</p><div class="note">Se desejar guardar a partida atual, exporte-a antes.</div><div class="modal-foot"><button class="btn" data-action="close-modal">Cancelar</button><button class="btn btn-primary" data-action="choose-import">Escolher arquivo</button></div>`;
+      }
+      if(!html)return;
+      $('#modal-root').innerHTML=`<div class="modal-overlay" id="overlay"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">${html}</section></div>`;
+      document.body.style.overflow='hidden';
+      const first=$('#modal-root input:not([type=hidden]),#modal-root select');if(first)first.focus();
+    }
+    function closeModal(){modalCtx=null;$('#modal-root').innerHTML='';document.body.style.overflow='';}
+    function renderSetup(){
+      $('#app').innerHTML=`<main class="setup"><section class="setup-card"><div class="brand"><div class="brand-mark">$</div><div><div class="eyebrow">JOGUE SEM MAQUININHA</div><strong>SUPER IMOBILIÁRIO</strong></div></div><h1>Seu banco.<br>Sua partida. 🎲</h1><p>Jogue com até 6 pessoas usando um único celular. Cada jogador começa com <strong style="color:var(--mint)">R$ 15.000,00</strong>. Não precisa de conta nem de assinatura.</p>${!storageOk?'<div class="storage-banner">O navegador pode não salvar dados automaticamente. Exporte um backup após jogar.</div>':''}<form id="setup-form"><label class="field-label">Nome dos jogadores (2 a 6)</label><div class="setup-names">${setupNames.map((n,i)=>`<div class="setup-name"><span class="setup-number">0${i+1}</span><input class="field" name="playerName" aria-label="Nome do jogador ${i+1}" value="${escapeHtml(n)}" maxlength="42" required><button type="button" class="btn icon-btn" title="Remover jogador" aria-label="Remover jogador ${i+1}" data-action="setup-remove" data-index="${i}" ${setupNames.length<=2?'disabled':''}>−</button></div>`).join('')}</div><div class="row"><button type="button" class="btn" data-action="setup-add" ${setupNames.length>=6?'disabled':''}>＋ Adicionar jogador</button><span class="tiny muted">${setupNames.length}/6</span></div><hr><button class="btn btn-primary full" type="submit" style="min-height:54px">Começar partida →</button><p class="tiny">Seus dados ficam neste navegador. Exporte backups para não perder uma partida.</p></form></section></main>`;
+    }
+    function render(){
+      if(!state){renderSetup();return;}
+      const turn=findPlayer(state.turnId),total=state.players.reduce((s,p)=>s+p.balance,0),jailed=state.players.filter(p=>p.jailTurns).length;
+      $('#app').innerHTML=`<main class="shell"><header class="topbar"><div class="brand"><div class="brand-mark">$</div><div><div class="eyebrow">MESA DE JOGO</div><h1>Banco Imobiliário</h1></div></div><div class="top-actions"><button class="btn btn-small" data-action="undo" ${undoStack.length?'':'disabled'} title="Desfazer última ação">↶ Desfazer</button><button class="btn btn-small" data-action="export" title="Salvar uma cópia da partida">⇩ Backup</button><button class="btn btn-small" data-action="import">⇧ Importar</button></div></header>${!storageOk?'<div class="storage-banner">⚠ Salvamento automático indisponível neste navegador. Use “Backup” para guardar a partida.</div>':''}<section class="hero"><div class="hero-main"><div class="hero-title">⦿ RODADA ${state.round} · VEZ DE JOGAR</div><h2 class="turn-name">${escapeHtml(turn.name)}</h2><div class="turn-line">Saldo: <strong>${cash(turn.balance)}</strong>${turn.jailTurns?' · Está preso: avance o turno ou pague a fiança.':''}</div><div class="hero-controls"><button class="btn btn-primary" data-action="next">Próximo turno →</button><button class="btn" data-action="jail" data-player="${escapeHtml(turn.id)}">⛓ Prender</button>${turn.jailTurns?`<button class="btn" data-action="free" data-player="${escapeHtml(turn.id)}">Pagar fiança</button>`:''}</div></div><div class="hero-side"><div class="stat"><span>Jogadores</span><b>${state.players.length}</b><span>Até 6 pessoas</span></div><div class="stat"><span>Imóveis</span><b>${state.properties.length}</b><span>Registrados</span></div><div class="stat"><span>Dinheiro em jogo</span><b class="stat-money">${cash(total)}</b><span>Soma dos saldos</span></div><div class="stat"><span>Na prisão</span><b>${jailed}</b><span>${jailed?'Aguardando / fiança':'Ninguém preso'}</span></div></div></section><nav class="tabs" aria-label="Seções"><button class="tab ${activeTab==='painel'?'selected':''}" data-action="tab" data-tab="painel">Painel</button><button class="tab ${activeTab==='imoveis'?'selected':''}" data-action="tab" data-tab="imoveis">Imóveis (${state.properties.length})</button><button class="tab ${activeTab==='historico'?'selected':''}" data-action="tab" data-tab="historico">Histórico</button><button class="tab ${activeTab==='regras'?'selected':''}" data-action="tab" data-tab="regras">Regras e dados</button></nav><section class="panel">${activeTab==='painel'?panelView():activeTab==='imoveis'?propertiesView():activeTab==='historico'?historyView():rulesView()}</section><footer class="footer">Banco não oficial para partidas entre amigos · Sem servidor, sem contas, sem anúncios</footer></main>`;
+    }
+    function panelView(){return `<div class="section-title"><h2>Jogadores</h2><p>Escolha quem paga ou recebe nas operações</p></div><section class="players">${state.players.map(p=>`<article class="player ${p.id===state.turnId?'active':''}"><div class="player-color" style="background:${p.color}"></div><div class="player-top"><div class="avatar" style="background:${p.color}">${escapeHtml(p.name.slice(0,1).toUpperCase())}</div><div style="min-width:0"><div class="player-name">${escapeHtml(p.name)}</div><div class="status">${state.properties.filter(prop=>prop.ownerId===p.id).length} imóvel(is)</div></div>${p.jailTurns?`<span class="pill jail">⛓ ${p.jailTurns} turnos</span>`:p.id===state.turnId?'<span class="pill">SUA VEZ</span>':''}</div><div class="balance-label">SALDO DISPONÍVEL</div><div class="balance">${cash(p.balance)}</div><div class="player-actions"><button class="btn btn-small" data-action="bank" data-player="${escapeHtml(p.id)}">＋/− Banco</button><button class="btn btn-small" data-action="transfer" data-from="${escapeHtml(p.id)}">↗ Transferir</button>${p.jailTurns?`<button class="btn btn-small" data-action="free" data-player="${escapeHtml(p.id)}">🔓 Fiança</button>`:''}</div></article>`).join('')}</section><div class="section-title"><h2>Operações rápidas</h2></div><section class="shortcuts"><button class="shortcut" data-action="property"><strong>🏘</strong><div>Comprar imóvel<div class="desc">Registrar compra e aluguel</div></div></button><button class="shortcut" data-action="rent"><strong>💸</strong><div>Cobrar aluguel<div class="desc">Transferir para o proprietário</div></div></button><button class="shortcut" data-action="news"><strong>📰</strong><div>Carta de notícia<div class="desc">Prêmio ou prejuízo</div></div></button><button class="shortcut" data-action="jail"><strong>⛓</strong><div>Prisão<div class="desc">3 turnos ou R$ 500</div></div></button></section><div class="section-title"><h2>Últimas movimentações</h2><button class="btn btn-small" data-action="tab" data-tab="historico">Ver tudo →</button></div>${feedView(5)}`;}
+    function propertiesView(){return `<div class="section-title"><div><h2>Imóveis comprados</h2><p>Preços e aluguéis informados com base nas cartas físicas.</p></div><button class="btn btn-primary btn-small" data-action="property">＋ Comprar</button></div>${state.properties.length?`<div class="property-grid">${state.properties.map(p=>`<article class="property"><div class="property-head"><div><h3>🏠 ${escapeHtml(p.name)}</h3><div class="property-sub">Proprietário: <strong>${escapeHtml(nameOf(p.ownerId))}</strong> · ${p.houses} casa(s)</div></div><span class="pill">REGISTRADO</span></div><div class="property-price"><div><span>Preço da compra</span><b>${cash(p.price)}</b></div><div><span>Aluguel atual</span><b>${cash(p.rent)}</b></div></div><div class="property-actions"><button class="btn btn-small btn-primary" data-action="rent" data-property="${escapeHtml(p.id)}">💸 Aluguel</button><button class="btn btn-small" data-action="upgrade" data-property="${escapeHtml(p.id)}" ${p.houses>=4?'disabled':''}>＋ Casa</button><button class="btn btn-small btn-danger" data-action="sell" data-property="${escapeHtml(p.id)}">Vender</button></div></article>`).join('')}</div>`:'<div class="empty">Nenhum imóvel ainda. Cadastre a primeira compra.</div>'}`;}
+    function feedView(limit){let items=state.log.slice(0,limit);if(!items.length)return '<div class="empty">As operações realizadas aparecerão aqui.</div>';
+      return `<div class="feed">${items.map(l=>`<article class="feed-item"><div class="feed-icon">${escapeHtml(l.icon)}</div><div><div class="feed-message">${escapeHtml(l.message)}</div><div class="feed-time">${l.time&&Number.isFinite(Date.parse(l.time))?new Date(l.time).toLocaleString('pt-BR'):'Registro anterior'}</div></div></article>`).join('')}</div>`;}
+    function historyView(){return `<div class="section-title"><div><h2>Extrato da partida</h2><p>Últimas ${state.log.length} operações (até 250 registros).</p></div><button class="btn btn-small" data-action="export">⇩ Backup</button></div>${feedView(250)}`;}
+    function rulesView(){return `<div class="rules"><h2>Como funciona este banco</h2><h3>💰 Saldo inicial</h3><p>De 2 a 6 jogadores. Cada pessoa começa com <strong>R$ 15.000</strong>. Banco paga e recebe valores livremente; compras e multas só são permitidas com saldo suficiente.</p><h3>🏠 Imóveis e casas</h3><p>Cadastre cada imóvel uma vez ao comprar, incluindo preço e aluguel da carta física. Para cobrar aluguel, selecione imóvel e pagador; a transferência é automática. Uma casa custa o valor informado e você define o novo aluguel total conforme a carta. Esta versão admite até 4 casas por imóvel. A venda ao banco tem preço editável.</p><h3>📰 Notícias</h3><p>Você lê a carta física e cadastra o efeito: ganhar ou perder um valor, para uma pessoa ou todas. Se alguém não puder pagar uma notícia negativa para todos, a operação inteira será bloqueada para evitar pagamentos parciais. Pode vender um imóvel antes.</p><h3>⛓ Prisão</h3><p>O jogador preso perde suas <strong>próximas 3 oportunidades de jogar</strong>; cada vez que a sequência chega nele, o contador diminui automaticamente. Após a terceira vez perdida, fica livre e joga normalmente na próxima volta. Para sair antes, pague <strong>R$ 500</strong> ao banco. Estar preso não impede receber aluguel ou fazer pagamentos.</p><h3>⏭ Turnos</h3><p>O botão “Próximo turno” percorre jogadores na ordem em que foram cadastrados, pulando os presos e marcando a rodada. O banco não rola dados nem anda com as peças.</p><h3>🔒 Salvamento e backup</h3><p>A partida fica salva automaticamente <strong>neste navegador e neste aparelho</strong>, quando o armazenamento está disponível. Não há sincronização entre celulares. Faça um backup em JSON para poder importar depois ou trocar de aparelho. “Desfazer” reverte a última operação; os últimos 25 estados podem ser desfeitos.</p><div class="row"><button class="btn" data-action="export">⇩ Exportar partida</button><button class="btn" data-action="import">⇧ Importar backup</button><button class="btn btn-danger" data-action="reset">Reiniciar jogo</button></div></div>`;}
+    function rerenderRentPayer(){
+      const select=$('#field-property'),payer=$('#field-payer'),info=$('#rent-info');if(!select||!payer)return;
+      const property=state.properties.find(p=>p.id===select.value);if(!property)return;
+      const was=payer.value;payer.innerHTML=playerOptions(was===property.ownerId?state.players.find(p=>p.id!==property.ownerId)?.id:was,property.ownerId);
+      if(info)info.textContent=`Proprietário: ${nameOf(property.ownerId)} · Aluguel: ${cash(property.rent)}`;
+    }
+    function nextTurn(){
+      transact(()=>{
+        const ps=state.players;let idx=ps.findIndex(p=>p.id===state.turnId);
+        for(let attempts=0;attempts<ps.length*4+1;attempts++){
+          idx=(idx+1)%ps.length;if(idx===0)state.round++;
+          const candidate=ps[idx];
+          if(candidate.jailTurns){candidate.jailTurns--;entry(`${candidate.name} perdeu a vez na prisão. ${candidate.jailTurns?`Faltam ${candidate.jailTurns} turno(s).`:'Cumpriu a pena e está livre.'}`,'⛓');continue;}
+          state.turnId=candidate.id;entry(`Agora é a vez de ${candidate.name} (rodada ${state.round}).`,'🎲');return;
+        }
+        throw Error('Não foi possível avançar o turno.');
+      });
+    }
+    function submitAction(form){
+      if(!modalCtx)return;
+      const data=Object.fromEntries(new FormData(form));const type=modalCtx.type;let committed=false;
+      if(type==='transfer'){
+        const from=findPlayer(data.from),to=findPlayer(data.to),value=amount(data.value);if(!from||!to||from.id===to.id)return notify('Escolha dois jogadores diferentes.',true);
+        if(value===null)return notify('Digite um valor válido maior que zero.',true);
+        committed=transact(()=>{if(!requireFunds(from,value))return false;from.balance-=value;to.balance+=value;entry(`${from.name} pagou ${cash(value)} a ${to.name}${data.description?.trim()?` · ${data.description.trim().slice(0,90)}`:''}.`,'↗');},'Transferência realizada.');
+      }else if(type==='bank'){
+        const p=findPlayer(data.player),value=amount(data.value);if(!p||value===null)return notify('Selecione jogador e valor válido.',true);
+        committed=transact(()=>{if(data.direction==='minus'){if(!requireFunds(p,value))return false;p.balance-=value;entry(`${p.name} pagou ${cash(value)} ao banco${data.description?.trim()?` · ${data.description.trim().slice(0,90)}`:''}.`,'−');}else{if(p.balance+value>MAX_AMOUNT)throw Error('Valor máximo excedido.');p.balance+=value;entry(`${p.name} recebeu ${cash(value)} do banco${data.description?.trim()?` · ${data.description.trim().slice(0,90)}`:''}.`,'＋');}},'Operação registrada.');
+      }else if(type==='property'){
+        const p=findPlayer(data.player),price=amount(data.price),rent=amount(data.rent),name=String(data.name||'').trim().slice(0,65);
+        if(!p||!name||price===null||rent===null)return notify('Preencha nome, preço e aluguel com valores maiores que zero.',true);
+        if(state.properties.some(prop=>prop.name.toLocaleLowerCase('pt-BR')===name.toLocaleLowerCase('pt-BR')))return notify('Já existe imóvel com esse nome.',true);
+        committed=transact(()=>{if(!requireFunds(p,price))return false;p.balance-=price;state.properties.push({id:ident(),name,ownerId:p.id,price,rent,houses:0});entry(`${p.name} comprou ${name} do banco por ${cash(price)} · aluguel inicial ${cash(rent)}.`,'🏠');},'Imóvel comprado e cadastrado.');
+      }else if(type==='rent'){
+        const prop=state.properties.find(p=>p.id===data.property),payer=findPlayer(data.payer);if(!prop||!payer||payer.id===prop.ownerId)return notify('Escolha um pagador diferente do proprietário.',true);
+        const owner=findPlayer(prop.ownerId);
+        committed=transact(()=>{if(!requireFunds(payer,prop.rent))return false;if(owner.balance+prop.rent>MAX_AMOUNT)throw Error('Valor máximo excedido.');payer.balance-=prop.rent;owner.balance+=prop.rent;entry(`${payer.name} pagou ${cash(prop.rent)} de aluguel de ${prop.name} para ${owner.name}.`,'💸');},'Aluguel pago.');
+      }else if(type==='news'){
+        const val=amount(data.value),description=String(data.description||'').trim().slice(0,90),targets=data.target==='all'?state.players:[findPlayer(data.target)];
+        if(val===null||!description||targets.some(p=>!p))return notify('Preencha todos os dados da notícia.',true);
+        const plus=data.direction==='plus';
+        committed=transact(()=>{if(!plus){for(const p of targets)if(!requireFunds(p,val))return false;}else{for(const p of targets)if(p.balance+val>MAX_AMOUNT)throw Error('Valor máximo excedido.');}
+          for(const p of targets)p.balance+=plus?val:-val;
+          entry(`Notícia “${description}”: ${data.target==='all'?'todos os jogadores':targets[0].name} ${plus?(data.target==='all'?'receberam':'recebeu'):(data.target==='all'?'pagaram':'pagou')} ${cash(val)}${data.target==='all'?' cada um':''} ${plus?'do banco':'ao banco'}.`,'📰');},'Notícia aplicada.');
+      }else if(type==='jail'){
+        const p=findPlayer(data.player);if(!p)return notify('Jogador inválido.',true);if(p.jailTurns)return notify(`${p.name} já está preso.`,true);
+        committed=transact(()=>{p.jailTurns=3;entry(`${p.name} foi preso: perderá as próximas 3 vezes em que jogaria, ou poderá pagar ${cash(BAIL)}.`,'⛓');},'Jogador enviado à prisão.');
+      }else if(type==='free'){
+        const p=findPlayer(data.player);if(!p||!p.jailTurns)return notify('Este jogador já está livre.',true);
+        committed=transact(()=>{if(!requireFunds(p,BAIL))return false;p.balance-=BAIL;p.jailTurns=0;entry(`${p.name} pagou ${cash(BAIL)} de fiança ao banco e saiu da prisão.`,'🔓');},'Fiança paga.');
+      }else if(type==='upgrade'){
+        const prop=state.properties.find(p=>p.id===modalCtx.property);if(!prop)return notify('Imóvel não encontrado.',true);
+        const cost=amount(data.cost),rent=amount(data.rent);if(cost===null||rent===null||rent<prop.rent)return notify('Informe custo positivo e aluguel novo igual ou maior que o anterior.',true);
+        const owner=findPlayer(prop.ownerId);
+        committed=transact(()=>{if(prop.houses>=4)throw Error('Este imóvel já tem 4 casas.');if(!requireFunds(owner,cost))return false;owner.balance-=cost;prop.houses++;prop.rent=rent;entry(`${owner.name} comprou a casa ${prop.houses} de ${prop.name} por ${cash(cost)}. Novo aluguel: ${cash(rent)}.`,'🏘');},'Casa comprada.');
+      }else if(type==='sell'){
+        const prop=state.properties.find(p=>p.id===modalCtx.property),value=amount(data.value);if(!prop||value===null)return notify('Informe um preço de venda válido.',true);
+        const owner=findPlayer(prop.ownerId);
+        committed=transact(()=>{if(owner.balance+value>MAX_AMOUNT)throw Error('Valor máximo excedido.');owner.balance+=value;state.properties=state.properties.filter(p=>p.id!==prop.id);entry(`${owner.name} vendeu ${prop.name} ao banco por ${cash(value)}. Imóvel retirado do cadastro.`,'🏦');},'Venda registrada.');
+      }
+      if(committed)closeModal();
+    }
+    function saveSetupInputs(){const els=[...document.querySelectorAll('[name=playerName]')];if(els.length)setupNames=els.map((el,i)=>el.value.trim().slice(0,42)||`Jogador ${i+1}`);}
+    function exportBackup(){
+      if(!state)return;
+      const payload={app:'Banco do Super Imobiliário',exportedAt:new Date().toISOString(),state};
+      const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);
+      const anchor=document.createElement('a');anchor.href=url;anchor.download=`banco-imobiliario-rodada-${state.round}-${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(anchor);anchor.click();anchor.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);
+      notify('Backup preparado. Guarde o arquivo JSON.');
+    }
+    document.addEventListener('click',e=>{
+      if(e.target.id==='overlay'){closeModal();return;}
+      const b=e.target.closest('[data-action]');if(!b||b.disabled)return;
+      const action=b.dataset.action;
+      if(action==='close-modal'){closeModal();return;}
+      if(action==='setup-add'){saveSetupInputs();if(setupNames.length<6)setupNames.push(`Jogador ${setupNames.length+1}`);renderSetup();return;}
+      if(action==='setup-remove'){saveSetupInputs();if(setupNames.length>2)setupNames.splice(Number(b.dataset.index),1);renderSetup();return;}
+      if(!state)return;
+      if(action==='tab'){activeTab=b.dataset.tab;render();return;}
+      if(action==='next'){nextTurn();return;}
+      if(action==='undo'){
+        if(!undoStack.length)return;
+        state=undoStack.pop();save();render();notify('Última operação desfeita.');return;
+      }
+      if(action==='export'){exportBackup();return;}
+      if(action==='import'){openModal('import');return;}
+      if(action==='choose-import'){$('#import-file').click();return;}
+      if(action==='reset'){
+        if(confirm('Reiniciar a partida? TODOS os saldos, imóveis e registros serão apagados deste navegador. Faça um backup antes se quiser guardar.')){
+          state=null;undoStack=[];setupNames=['Jogador 1','Jogador 2','Jogador 3','Jogador 4'];activeTab='painel';try{localStorage.removeItem(KEY);localStorage.removeItem(HISTORY_KEY);}catch(e){}closeModal();render();notify('Partida reiniciada.');
+        }return;
+      }
+      if(['transfer','bank','property','rent','news','jail','free','upgrade','sell'].includes(action))openModal(action,{player:b.dataset.player,from:b.dataset.from,property:b.dataset.property});
+    });
+    document.addEventListener('submit',e=>{
+      if(e.target.id==='setup-form'){
+        e.preventDefault();saveSetupInputs();if(setupNames.length<2||setupNames.length>6)return notify('Use de 2 a 6 jogadores.',true);
+        const players=setupNames.map((name,i)=>({id:ident(),name:name.trim()||`Jogador ${i+1}`,color:COLORS[i],balance:START,jailTurns:0}));
+        state={version:1,players,properties:[],turnId:players[0].id,round:1,log:[]};entry('Partida iniciada: cada jogador recebeu R$ 15.000,00.','🎲');undoStack=[];activeTab='painel';save();render();notify('Partida criada. Bom jogo!');
+      }else if(e.target.id==='action-form'){e.preventDefault();submitAction(e.target);}
+    });
+    document.addEventListener('change',e=>{if(e.target.id==='field-property')rerenderRentPayer();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modalCtx)closeModal();});
+    $('#import-file').addEventListener('change',async e=>{
+      const file=e.target.files?.[0];if(!file)return;
+      try{
+        if(file.size>3000000)throw Error('Arquivo grande demais (máximo de 3 MB).');
+        const raw=JSON.parse(await file.text());const imported=validate(raw.state||raw);
+        if(!confirm('Importar este backup e substituir a partida atual?'))return;
+        state=imported;undoStack=[];activeTab='painel';save();closeModal();render();notify('Partida importada com sucesso.');
+      }catch(error){notify(`Importação falhou: ${error.message}`,true);}finally{e.target.value='';}
+    });
+    load();render();
+    if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  })();
+  </script>
+</body>
+</html>

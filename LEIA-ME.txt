@@ -1,0 +1,40 @@
+BANCO DO SUPER IMOBILIÁRIO — WEB APP GRATUITO
+================================================
+
+O QUE INCLUI
+- 2 a 6 jogadores, cada um começa com R$ 15.000.
+- Compra de imóveis e casas; aluguéis transferidos automaticamente.
+- Transferências, depósitos e pagamentos ao banco.
+- Cartas de notícias: ganha/perde dinheiro, individualmente ou para todos.
+- Prisão: jogador perde 3 oportunidades de jogar ou paga R$ 500 de fiança.
+- Histórico, desfazer, backup JSON e importação.
+- Funciona sem cadastro, sem pagamentos e sem servidor de dados.
+
+PARA TESTAR NO COMPUTADOR
+Abra o arquivo index.html em um navegador. O funcionamento do salvamento de
+arquivos locais depende do navegador; exporte um backup JSON por segurança.
+
+PARA INSTALAR NO CELULAR GRATUITAMENTE (GITHUB PAGES)
+1. Crie uma conta gratuita no GitHub, se ainda não tiver.
+2. Crie um repositório público novo, por exemplo banco-imobiliario.
+3. Envie para a RAIZ desse repositório os arquivos index.html,
+   manifest.webmanifest, sw.js, icon-192.png e icon-512.png.
+4. Nas configurações do repositório, vá a Settings > Pages. Em Build and
+   deployment, escolha Deploy from a branch e selecione main / (root). Salve.
+5. Aguarde até o GitHub indicar o link HTTPS do site; abra esse link no celular.
+6. No iPhone, abra pelo Safari e use Compartilhar > Adicionar à Tela de Início.
+   No Android, use o menu do Chrome > Instalar app / Adicionar à tela inicial.
+7. Depois do primeiro carregamento completo, os arquivos do app podem ficar
+   disponíveis offline pelo cache; faça backup da partida periodicamente.
+
+IMPORTANTE
+- Um aparelho central controla o banco da partida. NÃO há sincronização entre
+  diferentes aparelhos.
+- O site publicado em um repositório público pode ser visitado por outras
+  pessoas, mas os nomes, valores e a partida ficam no armazenamento local do
+  navegador de cada pessoa (não são enviados a um servidor pelo app).
+- Limpar os dados do navegador ou trocar de aparelho pode apagar a partida:
+  use Backup para exportar JSON e Importar para recuperá-lo.
+- Os valores de terrenos, imóveis, casas e aluguéis são lançados manualmente
+  de acordo com as cartas físicas. O app não sorteia cartas nem lança dados.
+- O app é um projeto independente, não oficial, feito para jogo entre amigos.
